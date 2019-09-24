@@ -1,0 +1,7 @@
+test.page_json:
+  path: '/page_json/{siteapikey}/{nid}'
+  defaults:
+    _controller: '\Drupal\test_module\Controller\TestModuleController::myPage'
+    _title: 'My first page in Drupal8'
+  requirements: 
+    _permission: 'TRUE'

@@ -1,0 +1,38 @@
+<?php
+
+
+/**
+ * @param array $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param string $form_id
+ *
+ * @return array $form
+ */
+
+function test_module_form_system_site_information_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+
+	$siteapikey = \Drupal::config('system.site')->get('siteapikey');
+
+	$form['site-info'] = array(
+		'#type' => 'fieldset',
+		'#title' => t('Site Info'),
+	);
+
+	$form['site-info']['siteapikey'] = array(
+		'#type' => 'textfield',
+		'#title' => t("Site API Key"),
+		'#description' => t('Site API Key '),
+		'#default_value' => isset($siteapikey)? $siteapikey: 'No API Key yet',
+		'#required' => TRUE,
+	);
+
+	$form['actions']['submit']['#value'] = t('Update Configuration');
+
+	$form['#submit'][] = 'Drupal\test_module\Controller\TestModuleController::test_form_submit';
+}
+
+
+  
+
+

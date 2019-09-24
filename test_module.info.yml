@@ -1,0 +1,6 @@
+name: test_module
+type: module
+description: 'test module for axelerant'
+package: Custom
+version: 1.x
+core: 8.x
